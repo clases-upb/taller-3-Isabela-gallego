@@ -6,13 +6,7 @@ package taller3;
 public class App {
 
    public static void main(String[] args) {
-            System.out.println(Escribir_asc(4, 3, 2));
-            System.out.println(Obtener_cifras(10));
-            System.out.println(Clasificar_char('a'));
-            System.out.println(Hallar_division_exacta(10, 5));
-            System.out.println(Consultar_hab((byte)2, "AA"));
-            System.out.println((true, false, false));
-            System.out.println(("verde"));
+           
 
    }
 
