@@ -6,7 +6,7 @@ package taller3;
 public class App {
 
    public static void main(String[] args) {
-   
+           
 
    }
 
@@ -21,9 +21,47 @@ public class App {
     * hay un error inesperado, deberá mostrar
     * el mensaje: "Ocurrió un error inesperado".
     */
-
-
-
+    public static String Escribir_asc(int nro1, int nro2, int nro3) {
+        try {
+            if (nro1 == nro2 || nro1 == nro3 || nro2 == nro3) {
+                return "Error: La función no considera números iguales";
+            }
+            int nro_mayor, nro_medio, nro_menor;
+            if (nro1 > nro2 && nro1 > nro3) {
+                nro_mayor = nro1;
+                if (nro2 > nro3) {
+                    nro_medio = nro2;
+                    nro_menor = nro3;
+                } else {
+                    nro_medio = nro3;
+                    nro_menor = nro2;
+                }
+            } else if (nro2 > nro1 && nro2 > nro3) {
+                nro_mayor = nro2;
+                if (nro1 > nro3) {
+                    nro_medio = nro1;
+                    nro_menor = nro3;
+                } else {
+                    nro_medio = nro3;
+                    nro_menor = nro1;
+                }
+            } else {
+                nro_mayor = nro3;
+                if (nro1 > nro2) {
+                    nro_medio = nro1;
+                    nro_menor = nro2;
+                } else {
+                    nro_medio = nro2;
+                    nro_menor = nro1;
+                }
+            }
+            return nro_mayor + " - " + nro_medio + " - " + nro_menor;
+    
+        } catch (Exception e) {
+            return "Error en la función Escribir_asc";
+        }
+    }
+    
    /*
     * 2. Construya un algoritmo e implemente la función en Java Obtener_cifras que
     * recibe un número entre 0 y 50.000
@@ -32,13 +70,42 @@ public class App {
     * no está en el rango devuelve 0. Y si hay un error inesperado, devuelve -1.
     * 
     */
+    public static byte Obtener_cifras(int nro){
 
+        try {
+           final byte nr1 = 0, nr2 = 1, nr3 = 2, nr4 = 3, nr5 = 4, nr6 = 5;
+           final int  nro_menor = 0, nro_min2 = 10, nro_min3 = 100, nro_min4 = 1000, nro_min5 = 10000, nro_max = 50000;
+  
+           if (nro < nro_menor && nro > nro_min2)
+              return nr1;
+  
+           else if (nro >= nro_menor && nro < nro_min2){
+              return nr2;
+           }
+           else if (nro >= nro_min2 && nro < nro_min3){
+              return nr3;
+           }
+           else if (nro >= nro_min3 && nro < nro_min4){
+              return nr4;
+           }  
+           else if (nro >= nro_min4 && nro < nro_min5){
+              return nr5;
+           }
+           else if (nro >= nro_min5 && nro <= nro_max){
+              return nr6;
+           }
+           else
+              return 0;
+        } 
+        catch (Exception e) {
+           return -1;
+        }
+     }
 
 
    /*
     * 3. Construya un algoritmo e implemente la función en Java Clasificar_char que
-    * recibe un caracter, y
-    * devuelve un string de acuerdo con las siguientes condiciones: si es un
+    * recibe un caracter, y devuelve un string de acuerdo con las siguientes condiciones: si es un
     * alfabético, deuvelve "ES LETRA";
     * si es numérico, devuelve "ES NUMERO" o si es un carácter especial, devuelve
     * "ESPECIAL".
@@ -48,7 +115,28 @@ public class App {
     * "Ocurrió un error inesperado".
     * 
     */
+    public static String Clasificar_char(char caracter_especial){
 
+        try {
+           if (caracter_especial <= 'z' && caracter_especial >= 'a' || caracter_especial <= 'Z' && caracter_especial >= 'A'){
+              return "ES LETRA";
+           }
+           else if (caracter_especial <= '9' && caracter_especial >= '0'){
+              return "ES NUMERO";
+           }
+           else if (caracter_especial <= 47 && caracter_especial >= 33 || caracter_especial <= 64 && caracter_especial >= 58 || 
+           caracter_especial <= 96 && caracter_especial >= 91 || caracter_especial >= 123 && caracter_especial<= 254){
+              return "ESPECIAL";
+           }
+           else {
+              return "Ocurrió un error inesperado";
+           }
+        } 
+        catch (Exception e) {
+           return "Ocurrió un error inesperado";
+        }
+     }
+  
 
 
    /*
@@ -69,7 +157,24 @@ public class App {
     * 
     * 
     */
-
+    public static String Hallar_division_exacta(int nro_1, int nro_2){
+      
+       try {
+          if (nro_1<=0 || nro_2<=0){
+               return "NO SE ADMITE CERO O NEGATIVOS";
+            }
+          if (nro_1%nro_2==0){
+               return "DIVISION EXACTA";
+            }
+           else{
+               return "DIVISION NO EXACTA";
+            }
+         } catch (Exception e) {
+              return " Ocurrió un error inesperado";
+           }
+      } 
+   
+      
    
 
    /*
@@ -96,8 +201,31 @@ public class App {
     * Si hay un error inesperado, deberá mostrar el mensaje:
     * "Ocurrió un error inesperado".
     */
-
-
+      public static String Consultar_hab (byte nro_camas, String  AA_VE  ){
+         try {
+            final byte cam_1=1, cam_2=2, cam_3=3, fuera_rango=0;
+            if (nro_camas < fuera_rango && nro_camas > cam_3 || AA_VE != "AA" && AA_VE != "VE"){
+                  return "DATOS NO VÁLIDOS";
+            }
+            if (nro_camas==cam_1 && AA_VE=="VE") {
+                  return "102";
+            }
+            else if (nro_camas==cam_2 && AA_VE=="AA"){
+                  return "101|301";
+            }
+            else if (nro_camas==cam_2 && AA_VE=="VE"){
+                return "202";
+            }
+            else if (nro_camas==cam_3 && AA_VE=="AA"){
+               return "201";
+            }
+            else 
+            return "Ocurrió un error inesperado";
+         } 
+         catch (Exception e) {
+         return "Ocurrió un error inesperado";
+      }
+   }
    
    /*
     * 
@@ -113,13 +241,27 @@ public class App {
     * Si hay un error inesperado, deberá mostrar el mensaje:
     * "Ocurrió un error inesperado".
     */
+      public static String Obtener_obs (boolean plato1, boolean plato2, boolean plato3){
+         try {
+            
+         if (plato1 && plato2 && plato3) {
+            return "BEBIDA Y POSTRE";
+         }
 
+         if (plato1 && plato2) {
+            return "BEBIDA";
+         }
 
+         if (plato1) {
+            return "POSTRE";
+         }
 
+         return "PLATOS NO VÁLIDOS";
 
-
-
-
+      } catch (Exception e) {
+         return "Ocurrió un error inesperado";
+      }
+   }
    /*
     * 7. Un grupo de amigos hace un sorteo semanalmente con pelotas de ping pong,
     * para saber quién invita y a qué  la próxima salida.
@@ -141,4 +283,37 @@ public class App {
     * "Ocurrió un error inesperado".
     * 
     */
+    public static String Conocer_invitacion(String colores){
+      try {
+ 
+         if (colores == "verde"){
+            return "Invita a las cervezas";
+         }
+         else if (colores == "azul"){
+            return "Invita a la pizza";
+         }
+ 
+         else if (colores == "rojo"){
+            return "Invita al postre";
+         }
+ 
+         else if (colores == "amarillo"){
+            return "Paga el parqueadero de todos";
+         }
+ 
+         else if (colores == "blanco" || colores == "negro"){
+            return "Vaya y disfrute";
+         }
+ 
+         else{
+            return "Error en el color";
+         }
+ 
+         
+      } catch (Exception e) {
+ 
+          return "Ocurrió un error inesperado";
+      }
+    }
 
+}
